@@ -5,9 +5,11 @@ import { useEffect, lazy } from 'react';
 import { useAuth } from 'hooks/useAuth';
 import { refreshUser } from 'redux/auth/operations';
 import { Login } from 'pages/Login';
+import { Contacts } from 'pages/Contacts.js';
 
-const RegisterPage = lazy(() => import('../pages/Register.js'));
-// const LoginPage = lazy(() => import('../pages/Login.js'));
+const RegisterPage = lazy(() => import('../pages/Register'));
+const LoginPage = lazy(() => import('../pages/Login.js'));
+const ContactsPage = lazy(() => import('../pages/Contacts'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -26,7 +28,7 @@ export const App = () => {
         <Route
           path="/login"
           element={
-            <RestrictedRoute redirectTo="/contacts" component={<Login />} />
+            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
           }
         />
         <Route
@@ -41,10 +43,7 @@ export const App = () => {
         <Route
           path="/contacts"
           element={
-            <PrivateRoute
-              redirectTo="/contacts"
-              component={<div>Contacts</div>}
-            />
+            <PrivateRoute redirectTo="/contacts" component={<ContactsPage />} />
           }
         />
       </Route>
