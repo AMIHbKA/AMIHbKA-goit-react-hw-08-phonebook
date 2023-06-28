@@ -1,5 +1,8 @@
+import { Form, Input, Label } from 'components/UI/Forms.styled';
+import { Wrapper } from 'components/UI/Wrapper/Wrapper';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
+import { Mail, Password, Profile } from 'components/UI/icons';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -19,20 +22,25 @@ export const RegisterForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Username
-        <input type="text" name="name" required />
-      </label>
-      <label>
-        Email
-        <input type="email" name="email" required />
-      </label>
-      <label>
-        Password
-        <input type="password" name="password" required />
-      </label>
-      <button type="submit">Register</button>
-    </form>
+    <Wrapper flex ai="center">
+      <Form onSubmit={handleSubmit}>
+        <Label>
+          Username
+          <Input type="text" name="name" icon required />
+          <Profile className="icon" />
+        </Label>
+        <Label>
+          Email
+          <Input type="email" name="email" icon required />
+          <Mail className="icon" />
+        </Label>
+        <Label>
+          Password
+          <Input type="password" name="password" icon required />
+          <Password className="icon" />
+        </Label>
+        <button type="submit">Register</button>
+      </Form>
+    </Wrapper>
   );
 };

@@ -22,8 +22,9 @@ export const App = () => {
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<div>HomePage</div>} />
+        {/* <Route index element={<div>HomePage</div>} /> */}
         <Route
+          index
           path="/login"
           element={
             <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />

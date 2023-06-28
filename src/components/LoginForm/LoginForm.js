@@ -1,3 +1,6 @@
+import { Form, Input, Label } from 'components/UI/Forms.styled';
+import { Mail, Password } from 'components/UI/icons';
+import { Wrapper } from 'components/UI/Wrapper/Wrapper';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
 
@@ -17,16 +20,20 @@ export const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} autoComplete="off">
-      <label>
-        Email
-        <input type="email" name="email" required />
-      </label>
-      <label>
-        Password
-        <input type="password" name="password" required />
-      </label>
-      <button type="submit">Log In</button>
-    </form>
+    <Wrapper flex ai="center">
+      <Form onSubmit={handleSubmit} autoComplete="off">
+        <Label>
+          Email
+          <Input type="email" name="email" icon required />
+          <Mail className="icon" />
+        </Label>
+        <Label>
+          Password
+          <Input type="password" name="password" icon required />
+          <Password className="icon" />
+        </Label>
+        <button type="submit">Log In</button>
+      </Form>
+    </Wrapper>
   );
 };
