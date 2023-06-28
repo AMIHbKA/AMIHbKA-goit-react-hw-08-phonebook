@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Trash } from '../../UI/icons';
+import { Trash } from '../../../UI/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteContactAsync, selectContactById } from 'redux/contacts/slice';
 

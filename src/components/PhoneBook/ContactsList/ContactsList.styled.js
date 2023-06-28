@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Trash as TrashIcon } from '../../UI/icons';
+import { Trash as TrashIcon } from '../../../UI/icons';
 export const List = styled.ul`
   display: flex;
   flex-direction: column;
