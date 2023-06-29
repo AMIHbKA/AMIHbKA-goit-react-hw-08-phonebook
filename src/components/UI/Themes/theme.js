@@ -2,6 +2,10 @@ export const theme = {
   colors: {
     primary: '#f8f8f8',
     secondary: '#094805',
+    link: '#00c3ff',
+    buttonBg: '#00c3ff',
+    buttonText: '#fff',
+    hover: '#0088b4',
   },
   breakpoints: {
     xs: '',
@@ -17,5 +21,8 @@ export const theme = {
   fontSize: {
     header: '1.3rem',
     text: '1rem',
+  },
+  animations: {
+    hover: 'background-color 0.3s ease-in-out',
   },
 };
