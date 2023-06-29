@@ -1,13 +1,14 @@
+import { theme } from 'components/UI/Themes/theme';
 import { PulseLoader } from 'react-spinners';
 
 export const Loader = () => {
   return (
     <PulseLoader
-      color="blue"
+      color={theme.colors.secondary}
       cssOverride={{
         textAlign: 'center',
       }}
-      margin={10}
+      margin={15}
       size={12}
     />
   );

@@ -1,5 +1,4 @@
 import { Wrapper } from 'components/UI/Wrapper/Wrapper';
-import { NavLink } from 'react-router-dom';
 import { NavLinkStyled } from './AuthNav.styled';
 
 export const AuthNav = () => {

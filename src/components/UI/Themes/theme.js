@@ -19,7 +19,7 @@ export const theme = {
     box: '0px 4px 8px rgb(0 0 0 / 0.2)',
   },
   fontSize: {
-    header: '1.3rem',
+    header: '1.8rem',
     text: '1rem',
   },
   animations: {

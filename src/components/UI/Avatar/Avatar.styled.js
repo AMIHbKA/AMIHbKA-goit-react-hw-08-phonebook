@@ -1,0 +1,16 @@
+const { styled } = require('styled-components');
+
+export const AvatarStyled = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2em;
+  height: 2em;
+  border-radius: 5px;
+  background-color: ${props => props.$bgColor};
+  color: ${props => props.$color};
+
+  &:not(:last-child) {
+    margin-bottom: 0.5em;
+  }
+`;
