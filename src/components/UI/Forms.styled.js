@@ -9,11 +9,11 @@ export const Form = styled.form`
   box-shadow: ${props => props.theme.shadows.box};
   font-size: ${props => props.theme.fontSize.text};
 
-  button {
+  /* button {
     display: block;
     margin-top: 1em;
     margin-inline: auto;
-  }
+  } */
 
   .icon {
     position: absolute;
@@ -23,6 +23,26 @@ export const Form = styled.form`
     top: calc(${props => props.theme.fontSize.text} * 2 - 5px);
     left: 0.2em;
   }
+
+  @keyframes slideInOut {
+    0% {
+      transform: translateX(-300%);
+    }
+    30% {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  animation: fadeIn 1s ease-in, slideInOut 1s ease-in;
 `;
 
 export const Label = styled.label`
@@ -47,4 +67,25 @@ export const Input = styled.input`
   outline: none;
 
   ${props => props.icon && `padding-left: 1.8em;`}
+`;
+
+export const FormField = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: ${props => props.theme.colors.secondary};
+
+  &:not(:first-child) {
+    margin-top: 1em;
+  }
+
+  .icon {
+    position: absolute;
+    fill: ${props => props.theme.colors.secondary};
+    width: 1.4em;
+    height: 1.4em;
+    top: 0.2em;
+    left: 0.2em;
+  }
 `;

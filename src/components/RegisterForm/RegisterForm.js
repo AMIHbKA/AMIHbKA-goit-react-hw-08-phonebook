@@ -1,8 +1,10 @@
 import { Form, Input, Label } from 'components/UI/Forms.styled';
-import { Wrapper } from 'components/UI/Wrapper/Wrapper';
+import { FormWrapper, Wrapper } from 'components/UI/Wrapper/Wrapper';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
 import { Mail, Password, Profile } from 'components/UI/icons';
+import { Button, LinkButton } from 'components/UI/Button.styles';
+import { useNavigate } from 'react-router-dom';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -20,9 +22,14 @@ export const RegisterForm = () => {
     );
     form.reset();
   };
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/login');
+  };
 
   return (
-    <Wrapper flex ai="center">
+    <FormWrapper flex ai="center">
       <Form onSubmit={handleSubmit}>
         <Label>
           Username
@@ -39,8 +46,13 @@ export const RegisterForm = () => {
           <Input type="password" name="password" icon required />
           <Password className="icon" />
         </Label>
-        <button type="submit">Register</button>
+        <Wrapper flex jcsb pt="1em">
+          <LinkButton type="button" onClick={handleClick}>
+            Already registered?
+          </LinkButton>
+          <Button type="submit">Register</Button>
+        </Wrapper>
       </Form>
-    </Wrapper>
+    </FormWrapper>
   );
 };

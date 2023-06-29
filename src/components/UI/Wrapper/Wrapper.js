@@ -10,6 +10,42 @@ export const Wrapper = styled.div`
 
     ${props => props.border && `border: ${props.border};`}
     ${props => props.br && `border-radius: ${props.br};`}
-    ${props =>
-    props.h && `height: ${props.h};`} /* transform: translateY(-10%); */
+    ${props => props.h && `height: ${props.h};`} 
+    ${props => props.m && `margin-top: ${props.m};`}
+    ${props => props.mt && `margin-top: ${props.mt};`}
+    ${props => props.mb && `margin-bottom: ${props.mb};`}
+    ${props => props.ml && `margin-left: ${props.ml};`}
+    ${props => props.mr && `margin-right: ${props.mr};`}
+    ${props => props.p && `padding: ${props.p};`}
+    ${props => props.pt && `padding-top: ${props.pt};`}
+    ${props => props.pb && `padding-bottom: ${props.pb};`}
+    ${props => props.pl && `padding-left: ${props.pl};`}
+    ${props => props.pr && `padding-right: ${props.pr};`}
+
+    ${props => props.jcc && `justify-content: center;`}
+    ${props => props.jcsb && `justify-content: space-between;`}
+    ${props => props.jc && `justify-content: ${props.jc};`}
+`;
+
+export const FormWrapper = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 80vh;
+  outline: 1px red solid;
+
+  &:before {
+    display: block;
+    content: '';
+    flex-grow: 1;
+    height: 24px;
+  }
+
+  &:after {
+    display: block;
+    content: '';
+    flex-grow: 1;
+    height: 24px;
+  }
 `;
