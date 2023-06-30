@@ -59,7 +59,6 @@ export const FormWrapper = styled.div`
   flex-direction: column;
   flex-grow: 1;
   min-height: 80vh;
-  outline: 1px red solid;
 
   &:before {
     display: block;
