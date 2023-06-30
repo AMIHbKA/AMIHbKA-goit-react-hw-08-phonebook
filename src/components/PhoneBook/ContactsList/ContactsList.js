@@ -5,18 +5,26 @@ import { useEffect } from 'react';
 import { Wrapper } from 'components/UI/Wrapper/Wrapper';
 import { ContactListStyled } from './ContactsList.styled';
 import { Title } from 'components/UI/Title.styles';
+import { InfoMessage } from 'components/UI/InfoMessage';
 
 export const ContactsList = () => {
   const dispatch = useDispatch();
   const contactIds = useSelector(selectFilteredContactsIds);
-
+  const filter = useSelector(state => state.filter);
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  const renderedListItems = contactIds.map(contactId => {
-    return <ListItem id={contactId} key={contactId} />;
-  });
+  const renderedListItems = contactIds.map(contactId => (
+    <ListItem id={contactId} key={contactId} />
+  ));
+
+  const emptyText =
+    !renderedListItems.length && !filter.length
+      ? 'No contacts have been added yet ¯\\_ (ツ)_/¯'
+      : !renderedListItems.length && filter.length
+      ? 'No names or numbers were found ¯\\_ (ツ)_/¯'
+      : null;
 
   return (
     <Wrapper>
@@ -24,7 +32,7 @@ export const ContactsList = () => {
       {renderedListItems.length ? (
         <ContactListStyled>{renderedListItems}</ContactListStyled>
       ) : (
-        <p>No contacts have been added yet ¯\_ (ツ)_/¯</p>
+        <InfoMessage>{emptyText}</InfoMessage>
       )}
     </Wrapper>
   );

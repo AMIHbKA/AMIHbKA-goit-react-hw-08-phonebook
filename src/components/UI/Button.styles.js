@@ -30,3 +30,19 @@ export const Button = styled.button`
     cursor: pointer;
   }
 `;
+
+export const ButtonIcon = styled.button`
+  display: flex;
+  width: 2em;
+  height: 2em;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+  }
+`;

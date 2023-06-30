@@ -9,12 +9,6 @@ export const Form = styled.form`
   box-shadow: ${props => props.theme.shadows.box};
   font-size: ${props => props.theme.fontSize.text};
 
-  /* button {
-    display: block;
-    margin-top: 1em;
-    margin-inline: auto;
-  } */
-
   .icon {
     position: absolute;
     fill: ${props => props.theme.colors.secondary};

@@ -1,7 +1,6 @@
 import { Button } from 'components/UI/Button.styles';
-import { Form, Input, Label } from 'components/UI/Forms.styled';
-import { Contact, ContactAddIcon, Phone, Ssdf } from 'components/UI/icons';
-import { FormWrapper, Wrapper } from 'components/UI/Wrapper/Wrapper';
+import { Wrapper } from 'components/UI/Wrapper/Wrapper';
+import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContactAsync } from 'redux/contacts/slice';
 import {
@@ -9,23 +8,36 @@ import {
   ContactInput,
   ContactLabel,
 } from './ContactForm.styled';
+import { validateName, validateNumber } from 'utilities/validation';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
   const loadingStatus = useSelector(state => state.contacts.isLoading);
+  const nameInputRef = useRef();
+  const numberInputRef = useRef();
 
   const handleSubmit = event => {
     event.preventDefault();
+    const name = nameInputRef.current.value;
+    const number = numberInputRef.current.value;
 
-    const form = event.currentTarget;
-    console.log('form', form);
+    if (!validateName(name)) {
+      alert('Введите имя, используя только буквы, апострофы, дефисы и пробелы');
+      return;
+    }
+
+    if (!validateNumber(number)) {
+      alert('Что-то там с циферками :)');
+      return;
+    }
+
     dispatch(
       addContactAsync({
-        name: form.elements.name.value,
-        number: form.elements.number.value,
+        name,
+        number,
       })
     );
-    form.reset();
+    event.currentTarget.reset();
   };
 
   return (
@@ -34,20 +46,20 @@ export const ContactForm = () => {
         <ContactLabel>
           Name
           <ContactInput
+            ref={nameInputRef}
             type="text"
             name="name"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             required
           />
         </ContactLabel>
         <ContactLabel>
           Number
           <ContactInput
+            ref={numberInputRef}
             type="tel"
             name="number"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             required
           />
         </ContactLabel>

@@ -1,4 +1,4 @@
-const { styled } = require('styled-components');
+import styled from 'styled-components';
 
 export const ContactListStyled = styled.ul`
   margin: 0 auto;
@@ -13,16 +13,32 @@ export const ContactListStyled = styled.ul`
     display: grid;
     grid-template-columns: 2em minmax(250px, 1fr) minmax(30px, 180px) 2em;
     grid-column-gap: 0.5em;
-    align-items: baseline;
+    align-items: center;
+
     word-wrap: break-word;
     color: ${props => props.theme.colors.secondary};
+
+    &:not(:last-child)::after {
+      margin-top: 0.5em;
+      content: '';
+      border-bottom: 1px solid ${props => props.theme.colors.hover};
+      grid-column: 1 / -1;
+    }
 
     span {
       font-weight: 500;
     }
 
-    &:not(:last-child) {
-      border-bottom: 1px solid black;
+    .icon {
+      width: 1.5em;
+      height: 1.5em;
+      fill: ${props => props.theme.colors.buttonBg};
+      transition: ${props => props.theme.animations.fill};
+
+      &:hover,
+      &:focus {
+        fill: ${props => props.theme.colors.delete};
+      }
     }
   }
 `;

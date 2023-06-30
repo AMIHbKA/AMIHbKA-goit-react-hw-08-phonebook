@@ -6,6 +6,8 @@ export const theme = {
     buttonBg: '#00c3ff',
     buttonText: '#fff',
     hover: '#0088b4',
+    delete: 'red',
+    info: '#0088b4',
   },
   breakpoints: {
     xs: '',
@@ -24,5 +26,6 @@ export const theme = {
   },
   animations: {
     hover: 'background-color 0.3s ease-in-out',
+    fill: 'fill 0.3s ease-in-out',
   },
 };

@@ -8,7 +8,10 @@ export const Avatar = ({ text }) => {
   const bgColor = getRandomHexColor();
   const color = getContrast(bgColor);
   return (
-    <AvatarStyled $bgColor={bgColor} $color={color}>
+    // <AvatarStyled $bgColor={bgColor} $color={color}>
+    // в случае с передачей пропсов генерирует отдельный класс на !КАЖДЫЙ элемент
+    // использоване встроенного стиля позволяет использовать одно и то же имя для компонента
+    <AvatarStyled style={{ color: `${color}`, backgroundColor: `${bgColor}` }}>
       {filteredLetters}
     </AvatarStyled>
   );

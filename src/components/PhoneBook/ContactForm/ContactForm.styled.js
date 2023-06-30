@@ -10,15 +10,6 @@ export const ContactFormStyled = styled(Form)`
 `;
 
 export const ContactInput = styled(Input)`
-  @keyframes slideInOut {
-    0% {
-      transform: translateX(300%);
-    }
-    30% {
-      transform: translateX(0);
-    }
-  }
-
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -28,8 +19,7 @@ export const ContactInput = styled(Input)`
     }
   }
 
-  animation: fadeIn 1s ease-in, slideInOut 1s ease-in;
-  /* animation: fadeIn 1s ease-in; */
+  animation: fadeIn 1s ease-in;
 
   &.filter {
     /* margin-block: 24px; */

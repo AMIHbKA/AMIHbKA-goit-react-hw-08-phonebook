@@ -128,7 +128,7 @@ export const selectFilteredContactsIds = createSelector(
       .filter(
         contact =>
           contact.name.toLowerCase().includes(filter.toLowerCase()) ||
-          contact.number.toLowerCase().includes(filter.toLowerCase())
+          contact.number.replace(/\D/g, '').includes(filter)
       )
       .map(contact => contact.id)
 );

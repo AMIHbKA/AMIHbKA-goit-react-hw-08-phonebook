@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
-import { Trash } from '../../UI/icons';
+import { Delete } from '../../UI/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteContactAsync, selectContactById } from 'redux/contacts/slice';
 import { Avatar } from 'components/UI/Avatar/Avatar';
+import { ButtonIcon } from 'components/UI/Button.styles';
 
 export const ListItem = ({ id }) => {
   const contact = useSelector(state => selectContactById(state, id));
@@ -19,14 +20,14 @@ export const ListItem = ({ id }) => {
       <Avatar text={name} />
       <span>{name}</span>
       <a href={`tel:${number}`}>{number}</a>
-      <button
+      <ButtonIcon
         type="button"
         onClick={onDelete}
         aria-label="Delete Contact"
         disabled={loadingStatus}
       >
-        <Trash width="1em" height="1em" />
-      </button>
+        <Delete className="icon" />
+      </ButtonIcon>
     </li>
   );
 };
