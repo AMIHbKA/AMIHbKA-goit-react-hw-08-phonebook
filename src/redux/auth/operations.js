@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
+import { checkErrors, checkSuccesfull } from 'utilities/checkErrors';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
@@ -28,8 +30,10 @@ export const register = createAsyncThunk(
       const response = await axios.post('users/signup', credentials);
       // After successful registration, add the token to the HTTP header
       setAuthHeader(response.data.token);
+      toast.success(checkSuccesfull('users/signup', response.status));
       return response.data;
     } catch (error) {
+      toast.error(checkErrors('users/signup', error.response.status));
       return thunkApi.rejectWithValue(error.message);
     }
   }
@@ -49,8 +53,11 @@ export const logIn = createAsyncThunk(
       const response = await axios.post('/users/login', credentials);
       // After successful login, add the token to the HTTP header
       setAuthHeader(response.data.token);
+      toast.success(checkSuccesfull('users/login', response.status));
+
       return response.data;
     } catch (error) {
+      toast.error(checkErrors('users/login', error.response.status));
       return thunkApi.rejectWithValue(error.message);
     }
   }
@@ -69,7 +76,10 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkApi) => {
     await axios.post('users/logout');
     // After a successful logout, remove the token from the HTTP header
     clearAuthHeader();
+
+    toast.success(checkSuccesfull('users/logout', 200));
   } catch (error) {
+    toast.error(checkErrors('users/logout', error.response.status));
     return thunkApi.rejectWithValue(error.message);
   }
 });
@@ -87,6 +97,7 @@ export const refreshUser = createAsyncThunk(
 
     if (persistedToken === null) {
       // If there is no token, exit without performing any request
+      toast.error('Unable to fetch user');
       return thunkApi.rejectWithValue('Unable to fetch user');
     }
 
@@ -94,8 +105,12 @@ export const refreshUser = createAsyncThunk(
       // If there is a token, add it to the HTTP header and perform the request
       setAuthHeader(persistedToken);
       const response = await axios.get('users/current');
+      toast.success(checkSuccesfull('users/current', response.status));
+
       return response.data;
     } catch (error) {
+      toast.error(checkErrors('users/current', error.response.status));
+
       return thunkApi.rejectWithValue(error.message);
     }
   }

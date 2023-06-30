@@ -6,6 +6,8 @@ import {
   createAsyncThunk,
 } from '@reduxjs/toolkit';
 import { logOut } from '../auth/operations';
+import { toast } from 'react-toastify';
+import { checkErrors } from 'utilities/checkErrors';
 
 const contactsAdapter = createEntityAdapter();
 
@@ -19,6 +21,7 @@ export const fetchContacts = createAsyncThunk(
   async (_, rejectWithValue) => {
     try {
       const response = await axios.get('contacts');
+
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -41,6 +44,7 @@ export const addContactAsync = createAsyncThunk(
 
     try {
       const response = await axios.post('contacts', newContact);
+      toast.success('Contact successfully added');
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -53,6 +57,7 @@ export const deleteContactAsync = createAsyncThunk(
   async (id, rejectWithValue) => {
     try {
       await axios.delete(`contacts/${id}`);
+      toast.info('Contact successfully deleted');
       return id;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -128,7 +133,7 @@ export const selectFilteredContactsIds = createSelector(
       .filter(
         contact =>
           contact.name.toLowerCase().includes(filter.toLowerCase()) ||
-          contact.number.toLowerCase().includes(filter.toLowerCase())
+          contact.number.replace(/\D/g, '').includes(filter)
       )
       .map(contact => contact.id)
 );

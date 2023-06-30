@@ -1,9 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout, RestrictedRoute, PrivateRoute } from 'components/index';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, lazy } from 'react';
 import { useAuth } from 'hooks/useAuth';
 import { refreshUser } from 'redux/auth/operations';
+import { toast } from 'react-toastify';
 
 const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import('../pages/Login.js'));
@@ -12,10 +13,17 @@ const ContactsPage = lazy(() => import('../pages/Contacts'));
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
+  const error = useSelector(state => state.contacts.error);
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+    }
+  }, [error]);
 
   return isRefreshing ? (
     <b>Refreshing user...</b>
@@ -24,6 +32,7 @@ export const App = () => {
       <Route path="/" element={<Layout />}>
         <Route index element={<div>HomePage</div>} />
         <Route
+          index
           path="/login"
           element={
             <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
