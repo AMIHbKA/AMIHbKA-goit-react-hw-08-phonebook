@@ -7,7 +7,6 @@ import {
 } from '@reduxjs/toolkit';
 import { logOut } from '../auth/operations';
 import { toast } from 'react-toastify';
-import { checkErrors } from 'utilities/checkErrors';
 
 const contactsAdapter = createEntityAdapter();
 
