@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { Wrapper } from 'components/UI/Wrapper/Wrapper';
 import { ContactListStyled } from './ContactsList.styled';
 import { Title } from 'components/UI/Title.styles';
-import { InfoMessage } from 'components/UI/InfoMessage';
+import { InfoMessage } from 'components/UI/Messages';
 
 export const ContactsList = () => {
   const dispatch = useDispatch();

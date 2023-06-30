@@ -7,6 +7,7 @@ export const theme = {
     buttonText: '#fff',
     hover: '#0088b4',
     delete: 'red',
+    error: 'red',
     info: '#0088b4',
   },
   breakpoints: {

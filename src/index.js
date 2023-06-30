@@ -11,6 +11,8 @@ import { GlobalStyle } from './components/UI/GlobalStyles';
 import { theme } from 'components/UI/Themes/theme';
 import isPropValid from '@emotion/is-prop-valid';
 import {} from 'styled-components';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -26,5 +28,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </BrowserRouter>
       </PersistGate>
     </Provider>
+    <ToastContainer
+      theme="colored"
+      position="top-center"
+      autoClose={3000}
+      hideProgressBar
+    />
   </React.StrictMode>
 );

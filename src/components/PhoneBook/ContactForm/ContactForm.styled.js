@@ -19,10 +19,12 @@ export const ContactInput = styled(Input)`
     }
   }
 
-  animation: fadeIn 1s ease-in;
+  &.error {
+    border-width: 2px;
+    border-color: ${props => props.theme.colors.error};
+  }
 
   &.filter {
-    /* margin-block: 24px; */
     margin-inline: auto;
     width: 500px;
     text-align: center;
