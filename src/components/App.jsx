@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { Layout, RestrictedRoute, PrivateRoute } from 'components/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, lazy } from 'react';
@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import('../pages/Login.js'));
 const ContactsPage = lazy(() => import('../pages/Contacts'));
+const ExampleContactsPage = lazy(() => import('../pages/ExampleContacts'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -32,7 +33,15 @@ export const App = () => {
       <Route path="/" element={<Layout />}>
         <Route index element={<div>HomePage</div>} />
         <Route
-          index
+          path="/example"
+          element={
+            <RestrictedRoute
+              redirectTo="/contacts"
+              component={<ExampleContactsPage />}
+            />
+          }
+        />
+        <Route
           path="/login"
           element={
             <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
@@ -50,9 +59,10 @@ export const App = () => {
         <Route
           path="/contacts"
           element={
-            <PrivateRoute redirectTo="/contacts" component={<ContactsPage />} />
+            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
           }
         />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>
   );

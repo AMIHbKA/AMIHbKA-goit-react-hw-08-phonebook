@@ -8,6 +8,7 @@ export const Navigation = () => {
   return (
     <Wrapper as="nav" flex gap="1em">
       <NavLinkStyled to="/">Home</NavLinkStyled>
+      {!isLoggedIn && <NavLinkStyled to="/example">Example</NavLinkStyled>}
       {isLoggedIn && <NavLinkStyled to="/contacts">Contacts</NavLinkStyled>}
     </Wrapper>
   );
