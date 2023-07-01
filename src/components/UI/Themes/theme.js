@@ -13,11 +13,12 @@ export const theme = {
   breakpoints: {
     xs: '',
     s: '320px',
-    sm: '576px',
-    md: '768px',
-    lg: '992px',
-    xl: '1200px',
-    xxl: '1400px',
+    m: '375px',
+    l: '425px',
+    tablet: '767px',
+    laptop: '1024px',
+    laptopL: '1400px',
+    laptopXl: '2560px',
   },
   shadows: {
     box: '0px 4px 8px rgb(0 0 0 / 0.2)',

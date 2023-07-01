@@ -1,5 +1,6 @@
-import { Navigation, UserMenu, AuthNav } from 'components/index';
+import { UserMenu, AuthNav, Navigation, MobileMenu } from 'components/index';
 import { Container } from 'components/UI/Container/Container';
+import { MainTitle } from 'components/UI/Title.styles';
 import { useAuth } from 'hooks/useAuth';
 import { Header } from './AppBar.styled';
 
@@ -10,9 +11,10 @@ export const AppBar = () => {
     <Header>
       <Container flex jc="space-between" ai="baseline">
         <Navigation />
-        <h1>PhoneBook</h1>
+        <MainTitle>PhoneBook</MainTitle>
         {isLoggedIn ? <UserMenu /> : <AuthNav />}
       </Container>
+      <MobileMenu />
     </Header>
   );
 };
