@@ -20,7 +20,6 @@ export const fetchContacts = createAsyncThunk(
   async (_, rejectWithValue) => {
     try {
       const response = await axios.get('contacts');
-
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -43,7 +42,9 @@ export const addContactAsync = createAsyncThunk(
 
     try {
       const response = await axios.post('contacts', newContact);
-      toast.success('Contact successfully added');
+      toast.success('Contact successfully added', {
+        toastId: 'added',
+      });
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -56,7 +57,9 @@ export const deleteContactAsync = createAsyncThunk(
   async (id, rejectWithValue) => {
     try {
       await axios.delete(`contacts/${id}`);
-      toast.info('Contact successfully deleted');
+      toast.success('Contact successfully deleted', {
+        toastId: 'deleted',
+      });
       return id;
     } catch (error) {
       return rejectWithValue(error.message);

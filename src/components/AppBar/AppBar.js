@@ -9,8 +9,8 @@ export const AppBar = () => {
   return (
     <Header>
       <Container flex jc="space-between" ai="baseline">
-        {/* <h1>PhoneBook</h1> */}
         <Navigation />
+        <h1>PhoneBook</h1>
         {isLoggedIn ? <UserMenu /> : <AuthNav />}
       </Container>
     </Header>
