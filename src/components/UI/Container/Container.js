@@ -26,4 +26,6 @@ export const Container = styled.div`
     `
     gap: ${props.gap};
   `}
+
+  ${props => props.outline && `outline: 1px red solid;`}
 `;

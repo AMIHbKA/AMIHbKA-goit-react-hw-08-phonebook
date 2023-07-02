@@ -6,6 +6,8 @@ export const Title = styled.h2`
   margin-bottom: 24px;
   border-bottom: 1px solid ${props => props.theme.colors.secondary};
   color: ${props => props.theme.colors.secondary};
+
+  ${props => props.left && `text-align: left;`}
 `;
 
 export const MainTitle = styled.h1`

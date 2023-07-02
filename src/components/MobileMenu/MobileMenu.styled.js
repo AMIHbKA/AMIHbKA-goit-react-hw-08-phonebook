@@ -1,37 +1,58 @@
 import styled from 'styled-components';
 
 export const MobileMenuStyled = styled.div`
-  @media screen and (min-width: 767px) {
-    display: none;
-  }
-
-  @keyframes slideDown {
+  @keyframes slideLeft {
     from {
-      transform: translateY(-300%);
+      transform: translateX(-70%);
     }
     to {
-      transform: translateY(0);
+      transform: translateX(0%);
     }
   }
 
-  @keyframes slideUp {
+  @keyframes slideRight {
     from {
-      transform: translateY(0);
+      transform: translateX(0%);
     }
     to {
-      transform: translateY(-300%);
+      transform: translateX(-100%);
     }
   }
 
   .menu {
-    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70%;
+    height: 100%;
+    padding: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    background-color: ${props => props.theme.colors.primary};
+    animation: slideLeft 0.4s ease-in-out forwards;
     z-index: 999;
-    animation: slideDown 0.3s ease-in-out forwards;
-    width: 100%;
-    background-color: red;
+    box-shadow: ${props => props.theme.shadows.box};
   }
 
   .menu.hide {
-    animation: slideUp 0.3s ease-in-out forwards;
+    animation: slideRight 0.4s ease-in-out forwards;
+  }
+
+  .menu-button {
+    margin-left: auto;
+    padding: 0;
+    vertical-align: middle;
+    fill: ${props => props.theme.colors.secondary};
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .menu-icon {
+    width: 2rem;
+    height: 2rem;
   }
 `;

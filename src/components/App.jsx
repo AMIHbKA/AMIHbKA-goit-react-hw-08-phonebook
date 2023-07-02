@@ -6,6 +6,7 @@ import { useAuth } from 'hooks/useAuth';
 import { refreshUser } from 'redux/auth/operations';
 import { toast } from 'react-toastify';
 
+const HomePage = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import('../pages/Login.js'));
 const ContactsPage = lazy(() => import('../pages/Contacts'));
@@ -31,7 +32,7 @@ export const App = () => {
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<div>HomePage</div>} />
+        <Route index element={<HomePage />} />
         <Route
           path="/example"
           element={

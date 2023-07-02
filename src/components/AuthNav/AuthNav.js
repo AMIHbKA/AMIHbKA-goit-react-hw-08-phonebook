@@ -1,11 +1,19 @@
-import { Wrapper } from 'components/UI/Wrapper/Wrapper';
-import { NavLinkStyled } from './AuthNav.styled';
+import { AuthNavContainer, NavLinkStyled } from './AuthNav.styled';
+export const AuthNav = ({ closeMenu }) => {
+  const handleClick = () => {
+    if (closeMenu) {
+      closeMenu();
+    }
+  };
 
-export const AuthNav = () => {
   return (
-    <Wrapper flex gap={'1rem'} tabletMaxFalse>
-      <NavLinkStyled to="/login">Log in</NavLinkStyled>
-      <NavLinkStyled to="/register">Register</NavLinkStyled>
-    </Wrapper>
+    <AuthNavContainer flex gap={'1rem'}>
+      <NavLinkStyled to="/login" onClick={handleClick}>
+        Log in
+      </NavLinkStyled>
+      <NavLinkStyled to="/register" onClick={handleClick}>
+        Register
+      </NavLinkStyled>
+    </AuthNavContainer>
   );
 };

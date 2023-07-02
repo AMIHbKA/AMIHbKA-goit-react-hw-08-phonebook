@@ -14,8 +14,10 @@ export const theme = {
     xs: '',
     s: '320px',
     m: '375px',
-    l: '425px',
-    tablet: '767px',
+    preL: '549px',
+    l: '550px',
+    preTablet: '767px',
+    tablet: '768px',
     laptop: '1024px',
     laptopL: '1400px',
     laptopXl: '2560px',
@@ -30,5 +32,10 @@ export const theme = {
   animations: {
     hover: 'background-color 0.3s ease-in-out',
     fill: 'fill 0.3s ease-in-out',
+  },
+  paddings: {
+    mobile: '10px',
+    tablet: '24px',
+    laptopL: '30px',
   },
 };

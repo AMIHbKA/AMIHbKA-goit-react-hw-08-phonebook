@@ -17,10 +17,13 @@ export const ListItem = ({ id }) => {
 
   return (
     <li>
-      <Avatar text={name} />
-      <span>{name}</span>
-      <a href={`tel:${number}`}>{number}</a>
+      <Avatar className="avatar" text={name} />
+      <span className="name">{name}</span>
+      <a className="number" href={`tel:${number}`}>
+        {number}
+      </a>
       <ButtonIcon
+        className="delete-button"
         type="button"
         onClick={onDelete}
         aria-label="Delete Contact"
