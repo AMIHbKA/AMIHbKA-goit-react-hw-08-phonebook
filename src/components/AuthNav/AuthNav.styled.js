@@ -9,3 +9,8 @@ export const NavLinkStyled = styled(NavLink)`
     border-bottom: 2px ${props => props.theme.colors.secondary} solid;
   }
 `;
+
+export const AuthNavContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+`;

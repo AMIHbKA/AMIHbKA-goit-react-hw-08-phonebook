@@ -1,13 +1,17 @@
 import styled from 'styled-components';
 
 export const Form = styled.form`
-  padding: 10px;
   margin-inline: auto;
-  width: 500px;
-  border: 1px solid ${props => props.theme.colors.secondary};
-  border-radius: 5px;
-  box-shadow: ${props => props.theme.shadows.box};
+  width: 95%;
+  max-width: 500px;
   font-size: ${props => props.theme.fontSize.text};
+
+  @media screen and (min-width: ${props => props.theme.breakpoints.tablet}) {
+    padding: 10px;
+    border: 1px solid ${props => props.theme.colors.secondary};
+    border-radius: 5px;
+    box-shadow: ${props => props.theme.shadows.box};
+  }
 
   .icon {
     position: absolute;

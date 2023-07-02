@@ -53,28 +53,26 @@ export const ContactForm = () => {
       )}
       <Wrapper flex>
         <ContactFormStyled onSubmit={handleSubmit} autoComplete="off">
-          <ContactLabel>
-            Name
-            <ContactInput
-              className={nameError ? 'error' : ''}
-              ref={nameInputRef}
-              type="text"
-              name="name"
-              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              required
-            />
-          </ContactLabel>
-          <ContactLabel>
-            Number
-            <ContactInput
-              className={numberError ? 'error' : ''}
-              ref={numberInputRef}
-              type="tel"
-              name="number"
-              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-              required
-            />
-          </ContactLabel>
+          <ContactLabel htmlFor="name">Name</ContactLabel>
+          <ContactInput
+            id="name"
+            className={nameError ? 'error' : ''}
+            ref={nameInputRef}
+            type="text"
+            name="name"
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            required
+          />
+          <ContactLabel htmlFor="number">Number</ContactLabel>
+          <ContactInput
+            id="number"
+            className={numberError ? 'error' : ''}
+            ref={numberInputRef}
+            type="tel"
+            name="number"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            required
+          />
           <Button type="submit" disabled={loadingStatus}>
             Add contact
           </Button>

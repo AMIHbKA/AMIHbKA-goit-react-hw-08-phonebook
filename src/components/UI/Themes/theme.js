@@ -13,11 +13,14 @@ export const theme = {
   breakpoints: {
     xs: '',
     s: '320px',
-    sm: '576px',
-    md: '768px',
-    lg: '992px',
-    xl: '1200px',
-    xxl: '1400px',
+    m: '375px',
+    preL: '549px',
+    l: '550px',
+    preTablet: '767px',
+    tablet: '768px',
+    laptop: '1024px',
+    laptopL: '1400px',
+    laptopXl: '2560px',
   },
   shadows: {
     box: '0px 4px 8px rgb(0 0 0 / 0.2)',
@@ -29,5 +32,10 @@ export const theme = {
   animations: {
     hover: 'background-color 0.3s ease-in-out',
     fill: 'fill 0.3s ease-in-out',
+  },
+  paddings: {
+    mobile: '10px',
+    tablet: '24px',
+    laptopL: '30px',
   },
 };

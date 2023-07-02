@@ -6,6 +6,7 @@ import { Wrapper } from 'components/UI/Wrapper/Wrapper';
 import { ContactListStyled } from './ContactsList.styled';
 import { Title } from 'components/UI/Title.styles';
 import { InfoMessage } from 'components/UI/Messages';
+import { useTablet } from 'hooks/useWindowSize';
 
 export const ContactsList = () => {
   const dispatch = useDispatch();
@@ -26,9 +27,11 @@ export const ContactsList = () => {
       ? 'No names or numbers were found ¯\\_ (ツ)_/¯'
       : null;
 
+  const isTablet = useTablet();
+
   return (
     <Wrapper>
-      <Title>Phonebook</Title>
+      {isTablet && <Title>Phonebook</Title>}
       {renderedListItems.length ? (
         <ContactListStyled>{renderedListItems}</ContactListStyled>
       ) : (

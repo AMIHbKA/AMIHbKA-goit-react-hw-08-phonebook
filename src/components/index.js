@@ -7,3 +7,5 @@ export { RestrictedRoute } from './RestrictedRoute/RestrictedRoute';
 export { PrivateRoute } from './PrivateRoute/PrivateRoute';
 export { LoginForm } from './LoginForm/LoginForm';
 export { RegisterForm } from './RegisterForm/RegisterForm';
+export { MobileMenu } from './MobileMenu/MobileMenu';
+export { ToastContainerWrapper } from './ToastContainerWrapper/ToastContainerWrapper';

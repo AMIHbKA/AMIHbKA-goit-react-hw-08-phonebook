@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   padding: 24px;
   margin-inline: auto;
-  max-width: ${props => props.theme.breakpoints.xxl};
+  max-width: ${props => props.theme.breakpoints.laptopXl};
 
   ${props => props.flex && `display: flex;`}
   ${props => props.block && `display: block;`}
@@ -26,4 +26,6 @@ export const Container = styled.div`
     `
     gap: ${props.gap};
   `}
+
+  ${props => props.outline && `outline: 1px red solid;`}
 `;

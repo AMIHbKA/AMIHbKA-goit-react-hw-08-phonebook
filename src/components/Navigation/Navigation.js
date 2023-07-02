@@ -1,15 +1,32 @@
 import { NavLinkStyled } from 'components/AuthNav/AuthNav.styled';
-import { Wrapper } from 'components/UI/Wrapper/Wrapper';
 import { useAuth } from 'hooks/useAuth';
+import { NavigationStyled } from './Navigation.styled';
 
-export const Navigation = () => {
+export const Navigation = ({ closeMenu }) => {
   const { isLoggedIn } = useAuth();
+  const handleClick = () => {
+    if (closeMenu) {
+      closeMenu();
+    }
+  };
 
   return (
-    <Wrapper as="nav" flex gap="1rem">
-      <NavLinkStyled to="/">Home</NavLinkStyled>
-      {!isLoggedIn && <NavLinkStyled to="/example">Example</NavLinkStyled>}
-      {isLoggedIn && <NavLinkStyled to="/contacts">Contacts</NavLinkStyled>}
-    </Wrapper>
+    <>
+      <NavigationStyled as="nav" flex gap="1em">
+        <NavLinkStyled to="/" onClick={handleClick}>
+          Home
+        </NavLinkStyled>
+        {!isLoggedIn && (
+          <NavLinkStyled to="/example" onClick={handleClick}>
+            Example
+          </NavLinkStyled>
+        )}
+        {isLoggedIn && (
+          <NavLinkStyled to="/contacts" onClick={handleClick}>
+            Contacts
+          </NavLinkStyled>
+        )}
+      </NavigationStyled>
+    </>
   );
 };

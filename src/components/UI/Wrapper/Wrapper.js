@@ -51,6 +51,13 @@ ${props =>
     props.tac &&
     `text-align: center;
   `}
+
+  ${props =>
+    props.tabletMaxFalse &&
+    `@media screen and (max-width: ${props.theme.breakpoints.tablet}) {
+    display: none;
+  }
+  `}
 `;
 
 export const FormWrapper = styled.div`
