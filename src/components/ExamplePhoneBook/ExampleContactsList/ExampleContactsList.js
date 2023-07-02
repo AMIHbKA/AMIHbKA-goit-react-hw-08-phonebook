@@ -5,6 +5,7 @@ import { Wrapper } from 'components/UI/Wrapper/Wrapper';
 import { ContactListStyled } from 'components/PhoneBook/ContactsList/ContactsList.styled';
 import { Title } from 'components/UI/Title.styles';
 import { InfoMessage } from 'components/UI/Messages';
+import { useTablet } from 'hooks/useWindowSize';
 
 export const ExampleContactsList = () => {
   const contactIds = useSelector(selectFilteredExampleContactsIds);
@@ -20,10 +21,12 @@ export const ExampleContactsList = () => {
       : !renderedListItems.length && filter.length
       ? 'No names or numbers were found ¯\\_ (ツ)_/¯'
       : null;
+  const isTablet = useTablet();
 
   return (
     <Wrapper>
-      <Title>Phonebook</Title>
+      {isTablet && <Title>Phonebook</Title>}
+
       {renderedListItems.length ? (
         <ContactListStyled>{renderedListItems}</ContactListStyled>
       ) : (

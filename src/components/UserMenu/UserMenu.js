@@ -4,6 +4,7 @@ import { Wrapper } from 'components/UI/Wrapper/Wrapper';
 import { useAuth } from 'hooks/useAuth';
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
+import { UserMenuStyled } from './UserMenu.styled';
 
 export const UserMenu = ({ closeMenu }) => {
   const dispatch = useDispatch();
@@ -22,12 +23,14 @@ export const UserMenu = ({ closeMenu }) => {
   };
 
   return (
-    <Wrapper flex gap="1em" ai="baseline">
+    // <Wrapper flex gap="1em" ai="baseline">
+    <UserMenuStyled>
       <Avatar text={user.name} />
       <p>{user.name}</p>
       <Button type="button" onClick={handleLogout}>
         Logout
       </Button>
-    </Wrapper>
+    </UserMenuStyled>
+    // </Wrapper>
   );
 };
