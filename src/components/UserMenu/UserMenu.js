@@ -1,6 +1,5 @@
 import { Avatar } from 'components/UI/Avatar/Avatar';
 import { Button } from 'components/UI/Button.styles';
-import { Wrapper } from 'components/UI/Wrapper/Wrapper';
 import { useAuth } from 'hooks/useAuth';
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';

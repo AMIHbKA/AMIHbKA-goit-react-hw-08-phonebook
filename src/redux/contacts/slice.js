@@ -7,6 +7,7 @@ import {
 } from '@reduxjs/toolkit';
 import { logOut } from '../auth/operations';
 import { toast } from 'react-toastify';
+import { checkErrors } from 'utilities/checks';
 
 const contactsAdapter = createEntityAdapter();
 
@@ -47,6 +48,9 @@ export const addContactAsync = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
+      toast.error(
+        checkErrors('contacts/addContactAsync', error.response.status)
+      );
       return rejectWithValue(error.message);
     }
   }
@@ -62,6 +66,9 @@ export const deleteContactAsync = createAsyncThunk(
       });
       return id;
     } catch (error) {
+      toast.error(
+        checkErrors('contacts/deleteContactAsync', error.response.status)
+      );
       return rejectWithValue(error.message);
     }
   }
